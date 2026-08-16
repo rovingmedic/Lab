@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# demonstrate special variables
+
+echo "Script name: $0"
+echo "First argument: $1"
+echo "All arguments: $@"
+echo "Number of arguments: $#"
+
+echo "all arguments as single string: $*"
+
+echo "Exit code: $?"
+
+echo "Current shell's process ID: $$"
+echo "Current user: $USER"
+echo "Current Home directory: $HOME"
+echo "Current working directory: $PWD"
+
+

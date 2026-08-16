@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# WARNING!
+# ALWAYS VERIFY THIS FILE IS FREE OF ERROR USING shellcheck
+
+#=============================================================
+echo ""
+# get date and format output
+today=$(date +%Y-%m-%d)
+echo "Today is $today"
+echo ""
+# Store current directory
+current_dir=$(pwd)
+echo "The current working directory is $current_dir"
+echo ""
+# Get git branch
+branch=$(git branch --show-current)
+echo "active Git Branch is $branch"
+echo ""
+echo "==========================================================="
+# Provide info about dotfiles setup
+
+declare -i file_count
+folder="$HOME/lab"
+file_count=$(find "${folder}" -type f -not -path "*/.*" | wc -l)
+today=$(date +%Y-%m-%d)
+
+echo "LAB FILES INFO"
+echo "----------------------------------------------------------"
+echo "${USER} has ${file_count} files saved in: ${folder}"
+echo "Date: $today"
+echo ""
+echo "==========================================================="
+echo ""
+echo "==========================================================="
+# Description: Display Dotfiles Information
+
+declare -i file_count
+
+host="$(hostname)"
+dotfiles_dir="$HOME/dotfiles"
+today=$(date +%Y-%m-%d)
+
+file_count=$(find "${dotfiles_dir}" -type f -not -path "*/.*" | wc -l)
+
+
+echo "DOTFILES INFO"
+echo "--------------------------------------------------------"
+echo "System: $host"
+echo "User: $USER"
+echo "Dotfiles location: $dotfiles_dir"
+echo "Files tracked: $file_count"
+echo "Date: $today"
+echo ""
+echo "========================================================="
+echo ""
