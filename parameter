@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Description: demonstrate parameter expansion
+
+# External command (spawns new process)
+echo "sed"
+filename=$(echo "document.txt" | sed 's/.txt//') 
+echo "$filename"
+
+# Parameter expansion (built-in, faster)
+echo "%"
+filename="document.txt" 
+echo "${filename%.txt}"
+
+# Use default if variable is empty or unset
+echo "use default value"
+name=""
+echo "Hello, ${name:-User}"
+echo '$name' "= $name"
+# Hello, User
+
+# Set the variable if unset or empty
+echo "set value using default"
+name=""
+echo "${name:=User}"
+echo '$name' "= $name"
+# Now contains "User"
+
+# Practical use - script arguments
+echo "script arguments"
+# this example reads the second argument. RUN: ./scriptName arg1 arg2 arg3
+name="${2:-world}"
+log_level="${LOG_LEVEL:-info}"
+echo "Hello, $name (log: $log_level)"
+echo '$name' "= $name"
+
+
