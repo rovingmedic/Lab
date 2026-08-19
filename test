@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Description: demonstrate parameter expansion
+
+
+filename="document.txt"
+echo "${filename%.txt}"
