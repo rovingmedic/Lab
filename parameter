@@ -34,4 +34,92 @@ log_level="${LOG_LEVEL:-info}"
 echo "Hello, $name (log: $log_level)"
 echo '$name' "= $name"
 
+# STRING LENGTH
+# Read string length and then apply rule
+password="secretpass" # use secret and secretpass to demonstrate function
+echo "Length: ${#password}"
+\# 10
+
+# Validation
+if [[ ${#password} -lt 8 ]]; then
+    echo "Password too short"
+    exit 1
+fi
+
+
+# Removing Patterns
+# Remove suffix (from end)
+# Suffix is the end portion of a string, removed with `%` or `%%` (delete from left)
+filename="document.txt"
+echo "${filename%.txt}"
+# document
+
+filepath="backup.2024.tar.gz"
+echo "${filepath%.*}"
+# backup.2024.tar (shortest match)
+echo "${filepath%%.*}"
+# backup (longest match)
+
+filename="document.txt"
+echo "${filename%.txt}"
+# document
+
+filepath="backup.2024.tar.gz"
+echo "${filepath%.*}"
+# backup.2024.tar (shortest match)
+echo "${filepath%%.*}"
+# backup (longest match)
+
+
+filename="${filepath##*/}"
+# report.tar.gz (basename)
+directory="${filepath%/*}"
+# /home/user (dirname)
+extension="${filename##*.}"
+# gz
+basename="${filename%%.*}"
+# report
+
+# Search and Replace
+# Format is ${varname/findstring/replacewith}
+text="hello world world"
+
+# Replace first match
+echo "${text/world/bash}"
+# hello bash world
+
+# Replace all matches
+echo "${text//world/bash}"
+# hello bash bash
+
+# Delete (replace with nothing)
+echo "${text// /}"
+# helloworldworld
+
+# Path display trick
+# Colons to newlines - no sed needed
+echo "${PATH//:/$'\n'}"
+
+
+# Case Transformation
+name="hello world"
+echo "${name^}"
+# Hello world (capitalize first)
+echo "${name^^}"
+# HELLO WORLD (uppercase all)
+
+name="HELLO WORLD"
+echo "${name,,}"
+# hello world (lowercase all)
+
+# Expansion order matters. Brace expansion happens before variable expansion. Therefore {1..$n} doesn't work.
+n=5
+echo {1..$n}
+# Doesn't work - prints literal {1..5}
+eval echo {1..$n}
+# Works but eval is dangerous
+seq 1 $n
+# Better approach
+
+
 
