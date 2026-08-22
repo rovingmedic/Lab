@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Description: Inform colour of fruit
+
+if [[ -z "$1" ]]; then
+       echo "Include 1 argument: choose apple, banana, or kiwi"
+       exit 3
+elif [[ -n "$1" ]] && [[ -n "$2" ]]; then
+        echo "too many arguments: choose apple, banana or kiwi"
+	exit 2
+else
+	case "${1,,}" in
+		apple)
+			echo "Apple is red"
+			;;
+		banana)
+			echo "Banana is yellow"
+			;;
+		kiwi)
+			echo "Kiwi is golden"
+			;;
+		*)
+			echo "Unknow fruit, Choose apple, banana or kiwi"
+			exit 1
+			;;
+	esac
+fi
