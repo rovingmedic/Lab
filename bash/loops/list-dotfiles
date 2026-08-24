@@ -1,0 +1,15 @@
+#!/bin/bash
+# List files in directory
+# Specify directory checked
+# number each file listed
+
+count=1
+for file in ~/dotfiles/*; do 
+	[[ -f "$file" ]] || continue
+	if [[ $count -eq 1 ]]; then
+	       	echo "${file%/*}"; 
+ 	fi
+	echo "$count: ${file##*/}"
+	((count++))
+done
+

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# say hello
+for name in Alice Bob Charlie; do
+	echo "Hello, $name"
+done
+
+# count for
+echo ""
+echo "count for"
+
+for i in {1..5}; do
+	echo "Count: $i"
+done
+
+# count in multiples
+echo ""
+echo "count multiples"
+for n in {0..20..3}; do
+	echo "3 times: $n"
+done
+
+# count while
+echo ""
+echo "count while"
+count=1
+while [[ $count -le 5 ]]; do
+	echo "Count: $count"
+	((count++))
+done
+
+# break loop
+echo ""
+echo "break loop"
+for i in {1..5}; do
+	[[ $i -eq 4 ]] && break
+	echo "$i"
+done
+
+# skip and continue loop
+echo ""
+echo "skip and continue loop"
+for i in {1..5}; do
+	[[ $i -eq 3 ]] && continue
+	echo "$i"
+done
