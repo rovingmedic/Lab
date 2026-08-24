@@ -1,0 +1,53 @@
+#!/bin/bash
+echo "using *.txt"
+for file in *.txt; do
+	# Handle case when no files match
+	[[ -f "$file" ]] || continue
+	echo "Processing: $file"
+done
+
+# WRONG - fails with spaces in filenames
+echo ""
+echo "using (ls)"
+for file in $(ls); do
+	echo "$file"
+done
+
+# CORRECT - preserves spaces in filenames
+echo ""
+echo "using (ls) glob"
+for file in "$(ls)"; do
+	echo "$file"
+done
+
+# process files, skip hidden ones
+echo ""
+echo "test files and continue"
+for file in .* *; do
+	[[ "$file" == .* ]] && echo "Hidden file: $file" && continue 
+	[[ -f "$file" ]] || continue
+	echo "Processing: $file"
+done
+
+# batch renaming of files
+echo ""
+echo "rename .txt files"
+for file in *.txt; do
+	[[ -f "$file" ]] || continue
+	newname="backup_${file}"
+	mv "$file" "$newname"
+	echo "Old name: $file >> New name: $newname"
+done
+
+# process files recursively
+echo ""
+while IFS= read -r -d '' file; do
+	echo "Found: $file"
+done < <(find . -name "*.txt" -print0)
+
+
+
+
+
+
+

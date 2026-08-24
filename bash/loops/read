@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while read -r line; do
+	echo "Line: $line"
+done < /etc/hosts
+
+
+# /etc/passwd format: user:x:uid"gid"info:home:shell
+while IFS=: read -r user _ uid _ _ _ shell; do
+	echo "$user (UID $uid) uses $shell"
+done < /etc/passwd
+
