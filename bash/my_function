@@ -1,0 +1,37 @@
+#!/bin/bash
+name="Original"
+change_var() {
+# my_function() {
+	local name="Changed"
+	echo "Inside: $name"
+}
+
+# my_function
+# echo "Inside: local $name"
+echo "outside: $name"
+
+
+is_even() {
+	local num="$1"
+	(( num % 2 == 0 ))   # means remainder of number/2 is equal to 0 i.e. an num is an even number
+}
+
+if is_even 4; then
+	echo "4 is even"
+fi
+
+echo ""
+echo "numbered list"
+
+print_numbered() {
+	local items=("$@")
+	local i=1
+	for item in "${items[@]}"; do
+		echo "$i. $item"
+		((i++))
+	done
+}
+
+tasks=("Buy milk" "Walk dog" "Write code")
+print_numbered "${tasks[@]}"
+

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Description: Tell the color of a fruit
+# must include one argument
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: $0 <fruit>" >&2
+    exit 1
+fi
+
+fruit="${1,,}"
+# force lower case
+
+case "$fruit" in
+    apple)
+        echo "Apples are Red, Yellow or green"
+        ;;
+    banana)
+        echo "Bananas are Yellow"
+        ;;
+    orange)
+        echo "Oranges are Orange"
+        ;;
+    grape)
+        echo "Grapes are Purple or green"
+        ;;
+    *)
+        echo "Unknown fruit: $fruit" >&2
+        exit 1
+        ;;
+esac
