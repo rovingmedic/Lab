@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# read inputs
+read -r line
+arg1=$1
+
+# test for data, use active input to set url
+[[ -z "$line" && -n "$arg1" ]] && url="${arg1,,}"
+[[ -n "$line" && -z "$arg1" ]] && url="${line,,}" 
+
+# filter input
+title="${url#*//}"
+title1="${title%%/*}"
+
+# write stdout
+echo "[${title1}](${url})"
+
