@@ -1,0 +1,23 @@
+#!/bin/bash
+# generate a static HTML status page
+
+cat << EOF
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset+"UTF-8">
+	<title>Server Status</title>
+	<style>
+		body { font-family: sans-serif; ,argin: 40px; }
+		.status { colour: green; }
+	</style>
+</head>
+<body>
+	<h1>Server Status</h1>
+	<p class="status">Online</p>
+	<p>Built: $(date)</p>
+	p>Hostname: $(hostname)</p>
+</body>
+</html>
+EOF
+
